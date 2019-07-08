@@ -8,6 +8,8 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.1.6'
+# Bootstrap is an open source toolkit for developing with HTML, CSS, and JS.
+gem 'bootstrap-sass', '3.3.7'
 # Use Puma as the app server
 gem 'puma', '3.9.1'
 # Use SCSS for stylesheets
