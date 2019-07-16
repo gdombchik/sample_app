@@ -9,7 +9,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 
     #assert_no_difference verifies the count did not change
     assert_no_difference 'User.count' do
-      post users_path, params: { user: { name:  "",
+      post signup_path, params: { user: { name:  "",
                                          email: "user@invalid",
                                          password:              "foo",
                                          password_confirmation: "bar" } }
@@ -17,6 +17,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 
     #verifies that we are still on the users/new page
     assert_template 'users/new'
+    assert_select "form[action='/signup']"
     assert_select "form"
     assert_select "form input", 6
     assert_select "div#error_explanation"
