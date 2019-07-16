@@ -17,5 +17,15 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 
     #verifies that we are still on the users/new page
     assert_template 'users/new'
+    assert_select "form"
+    assert_select "form input", 6
+    assert_select "div#error_explanation"
+    assert_select "div.field_with_errors"
+    assert_select "div#error_explanation ul" do |element|
+      assert_select element, "li", "Name can't be blank"
+      assert_select element, "li", "Email is invalid"
+      assert_select element, "li", "Password confirmation doesn't match Password"
+      assert_select element, "li", "Password is too short (minimum is 6 characters)"
+    end
   end
 end
